@@ -1,50 +1,90 @@
-﻿namespace StudentGrades
+﻿// initialize variables - graded assignments 
+int currentAssignments = 5;
+
+int[] sophiaScores = { 90, 86, 87, 98, 100 };
+int[] andrewScores = { 92, 89, 81, 96, 90 };
+int[] emmaScores = { 90, 85, 87, 98, 68 };
+int[] loganScores = { 90, 95, 87, 88, 96 };
+
+string[] names = { "Sophia", "Andrew", "Emma", "Logan" };
+int[] studentScores = new int[10];
+
+string currentStudentLetterGrade = "";
+
+Console.WriteLine("Student\t\tGrade\n");
+
+foreach (string name in names)
 {
-    class Program
+    string currentStudent = name;
+
+    if(currentStudent == "Sophia")
+        studentScores = sophiaScores;
+
+    else if(currentStudent == "Andrew")
+        studentScores = andrewScores;
+    
+    else if(currentStudent == "Emma")
+        studentScores = emmaScores;
+    
+    else if (currentStudent == "Logan")
+        studentScores = loganScores;
+
+    int sumAssignmentScores = 0;
+
+    decimal currentStudentGrade;
+
+    foreach (int score in studentScores)
     {
-        static void Main(string[] args)
-        {
-            int currentAssignments = 5;
-
-            int sophia1 = 93;
-            int sophia2 = 87;
-            int sophia3 = 98;
-            int sophia4 = 95;
-            int sophia5 = 100;
-            int sophiaSum = sophia1 + sophia2 + sophia3 + sophia4 + sophia5;
-            decimal sophia = (decimal)sophiaSum / currentAssignments;
-
-            int nicolas1 = 80;
-            int nicolas2 = 83;
-            int nicolas3 = 82;
-            int nicolas4 = 88;
-            int nicolas5 = 85;
-            int nicolasSum = nicolas1 + nicolas2 + nicolas3 + nicolas4 + nicolas5;
-            decimal nicolas = (decimal)nicolasSum / currentAssignments;
-
-            int zahirah1 = 84;
-            int zahirah2 = 96;
-            int zahirah3 = 73;
-            int zahirah4 = 85;
-            int zahirah5 = 79;
-            int zahirahSum = zahirah1 + zahirah2 + zahirah3 + zahirah4 + zahirah5;
-            decimal zahirah = (decimal)zahirahSum / currentAssignments;
-
-            int jeong1 = 90;
-            int jeong2 = 92;
-            int jeong3 = 98;
-            int jeong4 = 100;
-            int jeong5 = 97;
-            int jeongSum = jeong1 + jeong2 + jeong3 + jeong4 + jeong5;
-            decimal jeong = (decimal)jeongSum / currentAssignments;
-
-            Console.WriteLine($@"
-Student     Grade
-Sophia      {sophia}    A
-Nicolas     {nicolas}    B
-Zahirah     {zahirah}    B  
-Jeong       {jeong}    A
-");
-        }
+        //adds exam score to the sum
+        sumAssignmentScores += score;
     }
+
+    currentStudentGrade = (decimal)sumAssignmentScores / currentAssignments;
+
+    if (currentStudentGrade >= 97)
+        currentStudentLetterGrade = "A+";
+
+    else if (currentStudentGrade >= 93)
+        currentStudentLetterGrade = "A";
+
+    else if (currentStudentGrade >= 90)
+        currentStudentLetterGrade = "A-";
+
+    else if (currentStudentGrade >= 87)
+        currentStudentLetterGrade = "B+";
+
+    else if (currentStudentGrade >= 83)
+        currentStudentLetterGrade = "B";
+
+    else if (currentStudentGrade >= 80)
+        currentStudentLetterGrade = "B-";
+
+    else if (currentStudentGrade >= 77)
+        currentStudentLetterGrade = "C+";
+
+    else if (currentStudentGrade >= 73)
+        currentStudentLetterGrade = "C";
+
+    else if (currentStudentGrade >= 70)
+        currentStudentLetterGrade = "C-";
+
+    else if (currentStudentGrade >= 67)
+        currentStudentLetterGrade = "D+";
+
+    else if (currentStudentGrade >= 63)
+        currentStudentLetterGrade = "D";
+
+    else if (currentStudentGrade >= 60)
+        currentStudentLetterGrade = "D-";
+
+    else 
+        currentStudentLetterGrade = "F";
+
+
+    Console.WriteLine($"{currentStudent}\t\t{currentStudentGrade}\t{currentStudentLetterGrade}");
+
 }
+
+
+Console.WriteLine("Press the Enter key to continue");
+Console.ReadLine();
